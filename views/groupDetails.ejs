@@ -1,0 +1,50 @@
+<%- include("partials/head") %>
+<%- include("partials/navbar") %>
+
+<div class="page-center" style="align-items:flex-start;">
+  <div class="group-page">
+
+    <div class="group-header">
+      <div>
+        <h1><%= group.name %></h1>
+        <p class="muted">Group Dashboard</p>
+      </div>
+
+      <div class="group-actions">
+        <a href="/expenses/add/<%= group._id %>" class="action-btn">+ Add Expense</a>
+        <button class="action-btn outline">Settle on Blockchain</button>
+      </div>
+    </div>
+
+    <div class="group-grid">
+
+      <div class="group-card">
+        <h3>Members</h3>
+        <ul class="member-list">
+          <% group.members.forEach(m => { %>
+            <li><%= m %></li>
+          <% }) %>
+        </ul>
+      </div>
+
+      <div class="group-card big">
+        <h3>Expenses</h3>
+
+        <% if(expenses.length === 0){ %>
+          <p class="muted center">No expenses yet</p>
+        <% } else { %>
+          <% expenses.forEach(e => { %>
+            <div class="expense-row">
+              <span><%= e.category %></span>
+              <span>₹ <%= e.amount %></span>
+            </div>
+          <% }) %>
+        <% } %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%- include("partials/footer") %>

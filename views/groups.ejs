@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head", { title: "Your Groups | SplitChain" }) %>
+<body>
+<%- include("partials/navbar") %>
+
+<div class="page-center" style="align-items:flex-start">
+<h1 style="text-align:center">Your Groups</h1>
+
+<div class="features groups-grid">
+  <% if (groups && groups.length > 0) { %>
+    <% groups.forEach(g => { %>
+      <a href="/groups/<%= g._id %>" class="card"><%= g.name %></a>
+    <% }) %>
+  <% } else { %>
+    <p style="text-align:center;opacity:.6">No groups yet</p>
+  <% } %>
+</div>
+
+<form action="/groups/create" method="post" class="form-box">
+  <input name="name" placeholder="Group name" required>
+  <input name="members" placeholder="Members wallet (comma separated)">
+  <button>Create Group</button>
+</form>
+</div>
+<%- include("partials/footer") %>
+</body>
+</html>

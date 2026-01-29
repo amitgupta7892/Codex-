@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="logo">💸 SplitChain</div>
+
+ <ul class="nav-links">
+  <li><a href="/">Home</a></li>
+  <li><a href="/groups">Groups</a></li>
+  <li><a href="/add/:groupId" onclick="checkGroupSelection(event)">Add Expense</a></li>
+  <li><a href="/groups" onclick="checkGroupSelection(event)">Settle</a></li>
+</ul>
+  <div style="display:flex;gap:12px;align-items:center">
+    <% if (locals.user) { %>
+      <span style="opacity:.8;font-size:.9rem">Hi, <%= user.name %></span>
+      <a href="/logout" class="wallet-btn" style="text-decoration:none">Logout</a>
+    <% } else { %>
+      <a href="/login" class="wallet-btn" style="text-decoration:none">Login</a>
+      <button class="wallet-btn" onclick="connectWallet()">Connect Wallet</button>
+    <% } %>
+  </div>
+</nav>

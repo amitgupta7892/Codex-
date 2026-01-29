@@ -1,0 +1,65 @@
+<%- include("partials/head") %>
+<%- include("partials/navbar") %>
+
+<div class="page-center">
+  <div class="expense-container">
+
+    <h2>Add Expense</h2>
+
+    <form action="/expenses/add" method="POST">
+
+      <input type="hidden" name="groupId" value="<%= group._id %>">
+
+      <div class="form-group">
+        <label>Amount</label>
+        <input type="number" name="amount" required>
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select name="category" required>
+          <option value="">Select category</option>
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" name="date" required>
+      </div>
+
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea name="notes"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Split With</label>
+        <div class="members" id="membersBox">
+          <% group.members.forEach(m => { %>
+            <span class="member" style="margin: 10px;"><%= m %></span>
+          <% }) %>
+        </div>
+      </div>
+
+      <input type="hidden" name="splitWith" id="splitWith">
+
+      <button class="add-btn">Add Expense</button>
+
+    </form>
+  </div>
+</div>
+
+<%- include("partials/footer") %>
+
+<script>
+const members = document.querySelectorAll(".member");
+const hidden = document.getElementById("splitWith");
+
+const list = [];
+members.forEach(m => list.push(m.innerText));
+hidden.value = list.join(",");
+</script>

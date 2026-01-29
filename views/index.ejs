@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Codex | Track nahi, settle karo</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<%- include("partials/navbar") %>
+<section class="hero">
+  <h1>Decentralized Group Expense Settlement</h1>
+  <p>Track expenses. Guaranteed settlement.</p>
+<button class="primary-btn" onclick="handleStart()">+ Create New Group</button>
+</section>
+
+<section class="box">
+  <h2>What's the problem?</h2>
+  <ul>
+    <li>Expenses just get tracked</li>
+    <li>Manual payment hassles</li>
+    <li>People delay or avoid paying</li>
+    <li>Trust issues in groups</li>
+  </ul>
+</section>
+
+<section class="box">
+  <h2>Our Solution – SplitChain</h2>
+  <ul>
+    <li>All expenses in one place</li>
+    <li>Smart contracts for dues</li>
+    <li>Wallet-based settlement</li>
+    <li>Transparent & secure</li>
+  </ul>
+</section>
+
+<section class="steps">
+  <div class="step-card">
+    <span>1</span>
+    <p>Create a group</p>
+  </div>
+  <div class="step-card">
+    <span>2</span>
+    <p>Add members</p>
+  </div>
+  <div class="step-card">
+    <span>3</span>
+    <p>Add expenses</p>
+  </div>
+  <div class="step-card">
+    <span>4</span>
+    <p>Wallet settlement</p>
+  </div>
+</section>
+
+<section class="box">
+  <h2>Why Blockchain?</h2>
+  <ul>
+    <li>No manual trust</li>
+    <li>Tamper-proof records</li>
+    <li>Automatic settlement</li>
+    <li>No middleman</li>
+  </ul>
+</section>
+
+<section class="final">
+  <p>Start managing group expenses the smart way</p>
+  <button class="primary-btn" onclick="handleStart()">Create Your First Group</button>
+</section>
+
+<script src="/js/main.js"></script>
+<script src="/js/wallet.js"></script>
+<%- include("partials/footer") %>
+</body>
+</html>
