@@ -13,15 +13,15 @@ async function handleStart() {
   }
 }
 
+
 function checkGroupSelection(e) {
-  e.preventDefault(); // stop immediate redirect
+  e.preventDefault(); 
   fetch("/auth/check")
     .then(res => res.json())
     .then(data => {
       if (!data.loggedIn) {
         window.location.href = "/register";
       } else {
-        // select first group automatically or redirect to group list
         window.location.href = "/groups";
       }
     });

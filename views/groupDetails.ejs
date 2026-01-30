@@ -12,7 +12,9 @@
 
       <div class="group-actions">
         <a href="/expenses/add/<%= group._id %>" class="action-btn">+ Add Expense</a>
-        <button class="action-btn outline">Settle on Blockchain</button>
+      <button onclick="settle('<%= user.wallet %>', '0.01', '<%= group.name %>')" class="primary-btn">
+  Settle on Blockchain
+</button>
       </div>
     </div>
 
@@ -48,3 +50,8 @@
 </div>
 
 <%- include("partials/footer") %>
+<script>
+function settle(to, amount, group){
+  settleOnChain(to, amount, group);
+}
+</script>
