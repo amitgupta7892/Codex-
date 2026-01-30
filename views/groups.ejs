@@ -4,25 +4,35 @@
 <body>
 <%- include("partials/navbar") %>
 
-<div class="page-center" style="align-items:flex-start">
-<h1 style="text-align:center">Your Groups</h1>
+<div class="groups-page">
 
-<div class="features groups-grid">
-  <% if (groups && groups.length > 0) { %>
-    <% groups.forEach(g => { %>
-      <a href="/groups/<%= g._id %>" class="card"><%= g.name %></a>
-    <% }) %>
-  <% } else { %>
-    <p style="text-align:center;opacity:.6">No groups yet</p>
-  <% } %>
+  <h1 class="page-title">Your Groups</h1>
+
+  <div class="groups-grid">
+    <% if (groups && groups.length > 0) { %>
+      <% groups.forEach(g => { %>
+        <a href="/groups/<%= g._id %>" class="group-card">
+          <h3><%= g.name %></h3>
+          <p>👥 <%= g.members.length %> members</p>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p class="empty-text">No groups yet</p>
+    <% } %>
+  </div>
+
+  <div class="create-box">
+    <h2>Create a New Group</h2>
+
+    <form action="/groups/create" method="post">
+      <input name="name" placeholder="Group name" required />
+      <input name="members" placeholder="Members' wallets (comma separated)" />
+      <button type="submit">Create Group</button>
+    </form>
+  </div>
+
 </div>
 
-<form action="/groups/create" method="post" class="form-box">
-  <input name="name" placeholder="Group name" required>
-  <input name="members" placeholder="Members wallet (comma separated)">
-  <button>Create Group</button>
-</form>
-</div>
 <%- include("partials/footer") %>
 </body>
 </html>

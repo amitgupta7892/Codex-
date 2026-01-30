@@ -4,6 +4,7 @@
 <div class="page-center" style="align-items:flex-start;">
   <div class="group-page">
 
+    <!-- Group Header -->
     <div class="group-header">
       <div>
         <h1><%= group.name %></h1>
@@ -12,14 +13,16 @@
 
       <div class="group-actions">
         <a href="/expenses/add/<%= group._id %>" class="action-btn">+ Add Expense</a>
-      <button onclick="settle('<%= user.wallet %>', '0.01', '<%= group.name %>')" class="primary-btn">
-  Settle on Blockchain
-</button>
+        <button onclick="settle('<%= user.wallet %>', '0.01', '<%= group.name %>')" class="primary-btn">
+          Settle on Blockchain
+        </button>
       </div>
     </div>
 
+    <!-- Group Grid -->
     <div class="group-grid">
 
+      <!-- Members Card -->
       <div class="group-card">
         <h3>Members</h3>
         <ul class="member-list">
@@ -29,9 +32,9 @@
         </ul>
       </div>
 
+      <!-- Expenses Card -->
       <div class="group-card big">
         <h3>Expenses</h3>
-
         <% if(expenses.length === 0){ %>
           <p class="muted center">No expenses yet</p>
         <% } else { %>
@@ -42,7 +45,28 @@
             </div>
           <% }) %>
         <% } %>
+      </div>
 
+      <!-- Notes Card -->
+      <div class="group-card big">
+        <h3>Notes</h3>
+
+        <!-- Form to add a note -->
+        <form action="/groups/<%= group._id %>/add-note" method="POST" class="add-note-form">
+          <input type="text" name="note" placeholder="Add a note" required>
+          <button type="submit" class="primary-btn">Add Note</button>
+        </form>
+
+        <!-- List of notes -->
+        <% if(group.notes && group.notes.length > 0){ %>
+          <ul class="notes-list">
+            <% group.notes.forEach(n => { %>
+              <li><%= n %></li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p class="muted center">No notes yet!</p>
+        <% } %>
       </div>
 
     </div>

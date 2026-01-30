@@ -15,6 +15,8 @@ const groupSchema = new mongoose.Schema({
     ref: "Expense"
   }],
 
+  notes: [{ type: String }], // ✅ Added notes array
+
   createdAt: { type: Date, default: Date.now }
 });
 
